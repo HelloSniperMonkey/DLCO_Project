@@ -1,0 +1,156 @@
+/*****************************************************************************
+TITLE: Claims                                                                                                                               
+AUTHOR: Soumyajyoti Mohanta
+ID: 2301AI23
+
+Declaration of Authorship
+This txt file, claims.txt, is part of the assignment of CS2102 at the 
+department of Computer Science and Engg, IIT Patna . 
+*****************************************************************************/
+
+==========
+Files:
+==========
+*All the files I submitted, asm.cpp and Assembler_Claims.txt, have my name and student id at the start, along with a declaration of authorship.
+
+The evidence for Assembler including the output files from the four test examples given (test1 to test6) and bubblesort has also been uploaded. They are test1(3 output files), test2(1 output file), test3(3 output files), 
+test4(3 output files), test5(3 output files), test6(3 output files) and bubblesort(3 output files). 
+
+All the test files have been tested and work properly. 
+
+
+=========================
+Compilation instructions:
+=========================
+    
+Windows:
+    g++ asm.cpp -o asm
+    asm <insert_file_name>.asm <listing_file_name>.l <binary_file_name>.o <logfile_name>.log
+Ubuntu and Macintosh:
+    g++ asm.cpp -o asm
+    ./asm <insert_file_name>.asm <listing_file_name>.l <binary_file_name>.o <logfile_name>.log
+
+Footnote:
+    * Input files(the .asm file) must be present in the same folder where the code is executed
+    * Ouput files -> if there are no errors then <insert_file_name>.o file and <insert_file_name>.l files will be produced in same folder.
+
+
+
+=============================
+Program format and structure:
+=============================
+
+The assembler:
+    
+    * Written in C++ Language
+
+    * Every instruction (including the SET instruction) is implemented.
+
+    * It contains a table of instruction names and expected operands.
+
+    * asm.cpp is the main and only file of my assembler
+
+    * It is a 2 pass assembler (implemented in asm.cpp)
+    
+    * outputs the required correct information in the form of 3 things :
+       *  the errors and warnings on terminal as well as log file if not assembled properly.
+       *  .l file for listing 
+       *  .o file for machine code 
+
+    * All important errors are diagnosed along with thier line numbers ( unknown instruction , no such label , duplicate label )
+
+    * Along with errors it also generates Warnings whenever there is a label declared but has not been used in the code.
+  
+    * Comments or self descriptive variable names have been used.
+
+    * Advanced Listing File gets generated that is bytes of instruction along with that instructions mnemonics .
+
+    * The Assembler is capable of understanding the values given in decimal , octal or hexadecimal format.
+
+    * SET instruction is also implemented. The breakage of SET into different instructions for implementation can be found in the code along with comments.
+
+    * Assembler successfully skips empty lines and comments
+
+
+
+===========================================
+Testing: (using a mac machine)
+===========================================
+The assembler:
+
+I have tested  7 examples(4 example from doc , 2 test files and bubblesort) shown as bellow. The errors only occurred in the file test2.asm and the program immediately stopped on the second pass displaying errors in the logfile.
+
+The others were tested without any errors detected and produced listing file and machine readable object file, for each example.
+
+
+1)
+#Input: asm test1.asm
+#Output: log logfile1.log
+-------------------------------------------------------------
+test1.asm file compiled 
+listing file saved in list1.l 
+machine code saved in binary1.o 
+-------------------------------------------------------------
+
+2)
+#Input: asm test2.asm
+#Output: log logfile2.log
+-------------------------------------------------------------
+test2.asm file coudn't be compiled because of errors
+Lable already defined: label
+Invalid Identifier: 0def
+Label nonesuch not found for instruction br at line : 3
+Invalid operand 08ge for instruction ldc at line : 4
+Missing operand for instruction ldc at line : 5
+Instruction add should not have operands at line : 6
+Invalid operand 5, 6 for instruction ldc at line : 7
+Invalid Instruction: fibble at line : 9
+Invalid Instruction: 0def at line : 10
+-------------------------------------------------------------                                                                          
+
+3)
+#Input: asm test3.asm
+#Output: log logfile3.log
+-------------------------------------------------------------
+test3.asm file compiled 
+listing file saved in list3.l 
+machine code saved in binary3.o 
+-------------------------------------------------------------
+
+4)
+#Input: asm test4.asm
+#Output: log logfile4.log
+-------------------------------------------------------------
+test4.asm file compiled 
+listing file saved in list4.l 
+machine code saved in binary4.o 
+-------------------------------------------------------------
+
+
+5)
+#Input: asm test5.asm
+#Output: log logfile5.log
+-------------------------------------------------------------
+test5.asm file compiled 
+listing file saved in list5.l 
+machine code saved in binary5.o 
+-------------------------------------------------------------
+
+
+6)
+#Input: asm test6.asm
+#Output: log logfile6.log
+-------------------------------------------------------------
+test6.asm file compiled 
+listing file saved in list6.l 
+machine code saved in binary6.o 
+-------------------------------------------------------------
+
+7)
+#Input: asm bubble_sort.asm
+#Output: log logfile_bubble_sort.log
+-------------------------------------------------------------
+bubble_sort.asm file compiled 
+listing file saved in list_bubble_sort.l 
+machine code saved in binary_bubble_sort.o 
+-------------------------------------------------------------

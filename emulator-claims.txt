@@ -1,0 +1,268 @@
+/*****************************************************************************
+TITLE: Claims                                                                                                                               
+AUTHOR: Soumyajyoti Mohanta
+ID: 2301AI23 
+
+Declaration of Authorship
+This txt file, claims.txt, is part of the assignment of CS2102 at the 
+department of Computer Science and Engg, IIT Patna . 
+*****************************************************************************/
+
+==========
+Files:
+==========
+*All the files I submitted, emu.cpp and Emulator_Claims.txt, have my name and student id at the start, along with a declaration of authorship.
+
+The evidence for Assembler including the output files from the test examples has also been uploaded. 
+All the test files have been tested and work properly.
+
+All .o files are to be run
+They are tested and run properly.
+
+
+
+=========================
+Compilation instructions:
+=========================
+    
+Windows:
+    g++ emu.cpp -o emu
+    emu <insert_file_name>.o <trace_file_name>.txt
+Ubuntu and Macintosh:
+    g++ emu.cpp -o emu
+    ./emu <insert_file_name>.o <trace_file_name>.txt
+
+Footnote:
+    * Input files(the .o file) must be present in the same folder where the code is executed
+
+
+
+=============================
+Program format and structure:
+=============================
+1. The emulator:
+
+* The emulator runs the given binary file and outputs a trace file and if the given file was not a bianry file unexpected behaviour may happen
+
+* Error handling: Throws error if instruction with invalid opcode comes, Throws error is segmentation fault occurs.
+
+* Functionalities:
+	- Full program trace: Performs all operations and saves it in trace.txt file. 
+    - instructions completed: tells you the number of instructions completed by the program on running. 
+	- Memory dump: Shows memory dump after completion of program also saves it in the trace.txt file.
+	- After completion of progarm shows the current value at all the registers.
+
+
+
+===========================================
+Testing: (using a mac machine)
+===========================================
+The emulator:
+
+I have tested four examples shown as below.
+
+1)
+#Input:
+emu binary1.o
+
+#Output: 
+
+00000000| 00002000 00000000 00000005 00002800 
+00000004| 00000000 00000105 A: 0 B: 0 PC: 0 SP: 0
+A: 20 B: 0 PC: 1 SP: 0
+A: 0 B: 20 PC: 2 SP: 0
+A: 0 B: 20 PC: 3 SP: 0
+A: 28 B: 0 PC: 4 SP: 0
+A: 0 B: 28 PC: 5 SP: 0
+A: 0 B: 28 PC: 6 SP: 0
+----------------------------------------
+7 instructions executed
+Final Registers:
+A: 0 B: 0 PC: 7 SP: 0
+------------------------MEMORY---------------------
+
+00000000| 00000020 00000028 00000005 00002800 
+00000004| 00000000 00000105 00000000 
+
+Output has the current value at memory location 0x00 with value 40 (decimal)
+
+2)
+
+#Input: 
+emu binary3.o
+
+#Output:
+
+00000000| 0027100a ffffff03 00000003 00004b00 
+00000004| 00000000 00000005 00000002 ffffff02 
+00000008| ffd8f00a 00000000 00000300 0027100a 
+0000000c| ffffff03 00000003 00004200 00000300 
+00000010| 00000005 00000002 ffffff02 ffd8f00a A: 0 B: 0 PC: 0 SP: 0
+A: 0 B: 0 PC: 1 SP: 2710
+A: 0 B: 0 PC: 2 SP: 2710
+A: 0 B: 0 PC: 3 SP: 2710
+A: 4b B: 0 PC: 4 SP: 2710
+A: 0 B: 4b PC: 5 SP: 2710
+A: 0 B: 4b PC: 6 SP: 2710
+A: 0 B: 0 PC: 7 SP: 2710
+A: 0 B: 0 PC: 8 SP: 2710
+A: 0 B: 0 PC: 9 SP: 0
+A: 0 B: 0 PC: a SP: 0
+A: 3 B: 0 PC: b SP: 0
+A: 3 B: 0 PC: c SP: 2710
+A: 0 B: 0 PC: d SP: 2710
+A: 0 B: 0 PC: e SP: 2710
+A: 42 B: 0 PC: f SP: 2710
+A: 3 B: 42 PC: 10 SP: 2710
+A: 3 B: 42 PC: 11 SP: 2710
+A: 0 B: 3 PC: 12 SP: 2710
+A: 3 B: 0 PC: 13 SP: 2710
+A: 3 B: 0 PC: 14 SP: 0
+----------------------------------------
+15 instructions executed
+Final Registers:
+A: 0 B: 3 PC: 15 SP: 0
+------------------------MEMORY---------------------
+
+00000000| 0000004b ffffff03 00000003 00000042 
+00000004| 00000000 00000005 00000002 ffffff02 
+00000008| ffd8f00a 00000000 00000300 0027100a 
+0000000c| ffffff03 00000003 00004200 00000300 
+00000010| 00000005 00000002 ffffff02 ffd8f00a 
+00000014| 00000000 
+
+
+3)
+#Input:
+emu binary4.o
+
+#Output: 
+
+00000000| 00100000 0000000b ffffff0a 00004b00 
+00000004| 00000003 00004a00 00000004 00000a0d 
+00000008| 0000010a 00000012 fffffd0a 00000103 
+0000000c| 00000203 00000000 00000003 ffffff0a 
+00000010| 00000302 00000003 00000102 0000240d 
+00000014| 0000010a 00000302 00000005 00000302 
+00000018| 00000101 00000303 00000002 00000101 
+0000001c| 00000003 00000002 00000202 00000007 
+00000020| ffffee10 00000102 0000030a 0000000e 
+00000024| fffffd0a 00000103 00000203 00000100 
+00000028| 00000008 00000302 00000007 00000410 
+0000002c| 00000302 00000202 00000007 00000203 
+00000030| 00000202 0000140f 00000302 ffffff01 
+00000034| 00000003 ffffff0a 00000102 00000003 
+00000038| 00000302 ffffff01 0000240d 00000102 
+0000003c| 00000003 00000103 00000302 0000240d 
+00000040| 0000010a 00000002 00000006 00000102 
+00000044| 0000030a 0000000e 00000100 00000102 
+00000048| 0000030a 0000000e 00000a14 00000014 A: 0 B: 0 PC: 0 SP: 0
+A: 1000 B: 0 PC: 1 SP: 0
+A: 0 B: 0 PC: 2 SP: 1000
+A: 0 B: 0 PC: 3 SP: fff
+A: 4b B: 0 PC: 4 SP: fff
+A: 0 B: 0 PC: 5 SP: fff
+A: 4a B: 0 PC: 6 SP: fff
+A: a14 B: 0 PC: 7 SP: fff
+A: 8 B: a14 PC: 12 SP: fff
+A: 0 B: 8 PC: 13 SP: fff
+A: 14 B: 0 PC: 38 SP: fff
+A: 0 B: 14 PC: 39 SP: fff
+A: ffffffff B: 14 PC: 3a SP: fff
+----------------------------------------
+d instructions executed
+Final Registers:
+A: 3b B: ffffffff PC: 5f SP: fff
+------------------------MEMORY---------------------
+
+00000000| 00100000 0000000b ffffff0a 00004b00 
+00000004| 00000003 00004a00 00000004 00000a0d 
+00000008| 0000010a 00000012 fffffd0a 00000103 
+0000000c| 00000203 00000000 00000003 ffffff0a 
+00000010| 00000302 00000003 00000102 0000240d 
+00000014| 0000010a 00000302 00000005 00000302 
+00000018| 00000101 00000303 00000002 00000101 
+0000001c| 00000003 00000002 00000202 00000007 
+00000020| ffffee10 00000102 0000030a 0000000e 
+00000024| fffffd0a 00000103 00000203 00000100 
+00000028| 00000008 00000302 00000007 00000410 
+0000002c| 00000302 00000202 00000007 00000203 
+00000030| 00000202 0000140f 00000302 ffffff01 
+00000034| 00000003 ffffff0a 00000102 00000003 
+00000038| 00000302 ffffff01 0000240d 00000102 
+0000003c| 00000003 00000103 00000302 0000240d 
+00000040| 0000010a 00000002 00000006 00000102 
+00000044| 0000030a 0000000e 00000100 00000102 
+00000048| 0000030a 0000000e 00000a14 00000014 
+0000004c| 00000000 00000000 00000000 00000000 
+00000050| 00000000 00000000 00000000 00000000 
+00000054| 00000000 00000000 00000000 00000000 
+00000058| 00000000 00000000 00000000 00000000 
+0000005c| 00000000 00000000 00000000 
+
+4)
+#Input:
+emu binary5.o
+
+#Output: 
+
+00000000| 00000514 00000814 00000714 00000614 
+00000004| 00000914 00000414 00000314 00000214 
+00000008| 00000114 00000014 A: 0 B: 0 PC: 0 SP: 0
+A: 0 B: 0 PC: 1 SP: 0
+A: 0 B: 0 PC: 2 SP: 0
+A: 0 B: 0 PC: 3 SP: 0
+A: 0 B: 0 PC: 4 SP: 0
+A: 0 B: 0 PC: 5 SP: 0
+A: 0 B: 0 PC: 6 SP: 0
+A: 0 B: 0 PC: 7 SP: 0
+A: 0 B: 0 PC: 8 SP: 0
+A: 0 B: 0 PC: 9 SP: 0
+A: 0 B: 0 PC: a SP: 0
+----------------------------------------
+b instructions executed
+Final Registers:
+A: 0 B: 0 PC: b SP: 0
+------------------------MEMORY---------------------
+
+00000000| 00000000 00000005 00000714 00000007 
+00000004| 00000914 00000009 00000314 00000003 
+00000008| 00000114 00000001 00000000 
+
+Here we can see that the array values are stored in the memory in the order given in program.
+
+5)
+#Input:
+emu binary6.o
+
+#Output: 
+it had a infinite loop and was genetating a logfile of size around 520 MB then crashing the system
+
+6)
+#Input:
+emu binary_bubble_sort.o
+
+#Output: 
+( truncated - you can see the full trace at trace_bubble_sort.txt )
+A: 0 B: 0 PC: 27 SP: 1
+A: 0 B: 0 PC: 28 SP: 1
+A: 0 B: 0 PC: 29 SP: 1
+A: 0 B: 0 PC: 30 SP: 1
+A: 0 B: 0 PC: 88 SP: 1
+----------------------------------------
+2114 instructions executed
+Final Registers:
+A: 0 B: 0 PC: 89 SP: 1
+------------------------MEMORY---------------------
+1
+2
+3
+4
+5
+23
+32
+67
+87
+133
+
+Here we can see that the array values are sorted in increasing order.

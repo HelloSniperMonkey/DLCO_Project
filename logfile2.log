@@ -1,0 +1,11 @@
+test2.asm file coudn't be compiled because of errors
+Lable already defined: label
+Invalid Identifier: 0def
+Label nonesuch not found for instruction br at line : 3
+Invalid operand 08ge for instruction ldc at line : 4
+Missing operand for instruction ldc at line : 5
+Instruction add should not have operands at line : 6
+Invalid operand 5, 6 for instruction ldc at line : 7
+Invalid Instruction: fibble at line : 9
+Invalid Instruction: 0def at line : 10
+-------------------------------------------------------------
