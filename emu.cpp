@@ -115,8 +115,10 @@ bool execute(int32_t instruction)
 
     default:
         cerr << "Invalid opcode: " << opcode << endl;
+        PC++;
         return false;
     }
+    PC++;
     return true;
 }
 
@@ -161,7 +163,6 @@ int main(int argc, char *argv[])
         i++;
         trace << "A: " << A << " B: " << B << " PC: " << PC << " SP: " << SP << endl;
         int32_t instruction = instructions[PC];
-        PC++;
         if (!execute(instruction))
         {
             cerr << "Error at line: " << PC << endl;
