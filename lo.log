@@ -1,0 +1,3 @@
+test1.asm file coudn't be compiled because of errors
+Invalid operand 0c40 for instruction ldc at line : 4
+-------------------------------------------------------------
